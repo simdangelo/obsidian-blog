@@ -137,3 +137,98 @@ Special method call could be implicit. For example the statement `for i in x:` c
 The only special method that is frequently called by user code directly is `__init__`.
 
 It's always better to call built-in functions (e.g. `len`, `iter`, `str`, etc) instead of their corresponding special methods because they often provide other services and are faster than those method calls.
+
+Now we'll see some of the most important uses of special methods:
+* Emulating Numeric Types
+* String representation of objects
+* Boolean value of an object
+* Implementing collections
+## Emulating Numeric Types
+Let' represent two-dimentional vectors and how to implement math operators:
+```python
+import math
+
+class Vector:
+	def __init__(self, x=0, y=0) -> None:
+		self.x = x
+		self.y = y
+
+	def __repr__(self) -> str:
+		return f"Vector({self.x!r}, {self.y!r})"
+
+	def __abs__(self):
+		return math.hypot(self.x, self.y)
+
+	def __bool__(self):
+		return bool(abs(self))
+
+	def __add__(self, other):
+		x = self.x + other.x
+		y = self.y + other.y
+		return Vector(x, y)
+
+	def __mul__(self, scalar):
+		return Vector(self.x*scalar, self.y*scalar)
+
+
+v1 = Vector(2,4)
+v2 = Vector(2,1)
+
+print("__abs__ usage: ", abs(v1))
+print("__add__ usage: ", v1+v2)
+print("__mul__ usage: ", v1*3)
+```
+* `__abs__` special method is called by `abs` built-in;
+* `__add__` special method is called by `+` built-in;
+* `__mul__` special method is called by `*` built-in.
+Output:
+```
+__abs__ usage: 4.47213595499958
+__add__ usage: Vector(4, 5)
+__mul__ usage: Vector(6, 12)
+```
+## String Representation
+The`__repr__` special method is called by `repr` built-in to get the string representation of the object for inspection.
+`print(v1)` without `__repr__`:
+```
+<__main__.Vector object at 0x10881a770>
+```
+`print(v1)` with `__repr__` defined as in the code above:
+```
+Vector(2, 4)
+```
+The string returned by `__repr__` should be unambiguous and, if possible, match the source code necessary to recreate the represented object.
+In contrast `__str__` is called by the `str()` built-in and implicitly used by the `print` function.
+Sometimes string returned by `__repr__` is user friendly, so you don't need to code `__str__`.
+If you only implement one of the two special methods, choose `__repr__`.
+## Boolean Value of a Custom Type
+To determine whether a value `x` is *truthy* or *falsy*, Python applies `bool(x)`, which returns either ´True´ or `False`.
+**`bool(x)`** calls **`x.__bool__`** special method. By default, instances of user-defined classes called in `bool()` function are returned as `True` unless `__bool__` or `__len__` methods are implemented. If `__bool__` is not implemented, Python tries to invoke `x.__len__`, and, if that returns zero, it `bool(x)` returns False; otherwise it returns `True`.
+In our implementation, `__bool__`returns `False` if the magnitude of the vector is zero.
+```python
+v1 = Vector(2,4)
+v2 = Vector(0,0)
+aList = [1,2,3]
+
+print(bool(v1))
+print(bool(v2))
+print(bool(aList))
+```
+Output:
+```
+True
+False
+True
+```
+## Collection API
+The following is the interfaces of the essential collection types in Python. All these classes are ABCs - *abstract base classes*.
+Method names in italic are abstract; the remaining have concrete implementations.
+![](Python/attachments/Pasted%20image%2020240612232007.png)The **`Collection`** abstract class in the figure unifies the three essential interfaces that every collection should implement:
+* **`Iterable`** to support `for`, `unpacking`, and other forms of iteration;
+* **`Sized`** to support the `len()`built-in function;
+* **`Container`** to support the `in` operator.
+Three very important specializations of `Collections` are:
+* **`Sequence`**, formalizing the interface of built-ins like **`list`** and `str`;
+* **`Mapping`**, implemented by **`dict`**, `collections.defaultdict`, etc.;
+* **`Set`**, the interface of the **`set`** and `frozenset` built-in types.
+Only `Sequence` is `Reversible`, because sequences support arbitrary ordering of their contents.
