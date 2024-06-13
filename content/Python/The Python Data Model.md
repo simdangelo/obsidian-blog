@@ -232,3 +232,9 @@ Three very important specializations of `Collections` are:
 * **`Mapping`**, implemented by **`dict`**, `collections.defaultdict`, etc.;
 * **`Set`**, the interface of the **`set`** and `frozenset` built-in types.
 Only `Sequence` is `Reversible`, because sequences support arbitrary ordering of their contents.
+
+>[!info] Special Method
+>Here's the *The Python Language Reference* official Python Documentation where more than 80 special method names are listed: https://docs.python.org/3/reference/datamodel.html
+
+# Why len is not a Method
+*This chapter seems interesting but it requires knowledge of CPython. I will come back when I have more knowledge*
