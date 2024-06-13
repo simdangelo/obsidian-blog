@@ -1,3 +1,8 @@
+---
+date: 2024-03-16
+tags:
+  - docker
+---
 In this tutorial, I will share the insights and tips I gathered from a video on YouTube by "TechWorld with Nana" (link here: [video tutorial here]( https://www.youtube.com/watch?v=3c-iBn73dDE&ab_channel=TechWorldwithNana)). These notes have been organized to follow the video step by step.
 # Main Docker Commands
 >[!tip]
