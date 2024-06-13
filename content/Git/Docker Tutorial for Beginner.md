@@ -420,7 +420,7 @@ So, now navigate to [localhost:8080](http://localhost:8080) and we get the same 
 Remember that in the previous example we created a database in the collection, which is **gone** because we **restart the container**. 
 
 >[!tip]
-When you restart a container, everything that you configured in that container application is gone. Data is lost. There is **no data persistence in the container** itself.
+>When you restart a container, everything that you configured in that container application is gone. Data is lost. There is **no data persistence in the container** itself.
 
 **Volumes** makes it possible to have persistency between the container restarts.
 
