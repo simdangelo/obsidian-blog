@@ -1,7 +1,7 @@
 In this tutorial, I will share the insights and tips I gathered from a video on YouTube by "TechWorld with Nana" (link here: [video tutorial here]( https://www.youtube.com/watch?v=3c-iBn73dDE&ab_channel=TechWorldwithNana)). These notes have been organized to follow the video step by step.
 # Main Docker Commands
 >[!tip]
-💡 **Container**: running environment for **IMAGE**.
+**Container**: running environment for **IMAGE**.
 
 ![Untitled](Git/attachments/Untitled%206.png)
 As you can see from the picture above, the application image (the application could be Postgres, Redis, etc…) needs a File System where it can save the log files or where you can store some configuration files and it needs the environmental configuration, like environmental variables and so on. All this stuff are provided by the container and container also has a port that is binded to it, which makes it possibile to talk to the application which is running inside the container.
@@ -420,7 +420,7 @@ So, now navigate to [localhost:8080](http://localhost:8080) and we get the same 
 Remember that in the previous example we created a database in the collection, which is **gone** because we **restart the container**. 
 
 >[!tip]
-💡 When you restart a container, everything that you configured in that container application is gone. Data is lost. There is **no data persistence in the container** itself.
+When you restart a container, everything that you configured in that container application is gone. Data is lost. There is **no data persistence in the container** itself.
 
 **Volumes** makes it possible to have persistency between the container restarts.
 
