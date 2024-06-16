@@ -1,0 +1,285 @@
+---
+date: 2024-06-13
+tags:
+  - python
+  - sequences
+modified: 2024-06-16T14:22:41+02:00
+---
+# Sequences Introduction
+Sequences in Python (such as **strings**, **bytes**, **lists**, **tuples**, arrays, etc.) result share a rich set of common operations, including **iteration**, **slicing**, **sorting**, and **concatenation**.
+> [!custom]- Additional Material
+> More on Sequence in Python at this link: https://realpython.com/python-sequences/
+
+The standard library offers a rich selection of sequence types implemented in C:
+* **Container Sequences**: can hold items of different types, including nested containers (i.e. `list`, `tuple`, `collections.deque`); they hold references to the objects they contains in their own memory space.
+* **Flat Sequences**: can hold items of one simple types (i.e. `str`, `bytes`, `arra.array`); they contain the value of its contents it their own memory space.
+![](Python/attachments/Pasted%20image%2020240613193951.png)
+> [!custom]- Additional Material
+> More on "How variables works in Python" at this link: https://www.youtube.com/watch?v=Bz3ir-vKqkk&ab_channel=Sreekanth
+
+Another way of grouping sequencee types is by mutability:
+* **Mutable Sequences**: like `list`, `bytearray`, `array.array` and `collections.deque`;
+* **Immutable Sequences**: like `tuple`, `str`, and `bytes`.
+A **Mutable Object** is an object that can have its value modified **in-place**.
+Here's how mutable sequence inherit all methods from immutable sequences, and implement several additional methods:
+![](Python/attachments/Pasted%20image%2020240613195549.png)The built-in concrete sequence types do not actually subclass the `Sequence` and `MutableSequence` abstract base classes, but they're virtual subclasses registered with those ABCs (*what does that mean? I don't understand*).
+A quick way to build a sequence is using a **List Comprehensions** (aka **listcomps**) if the target is a `list`, or a **Generator Expression** (aka **genexps**) for other kind of sequences.
+# List Comprehensions and Generator Expressions
+`list` is the most fundamental sequence type.
+Here's a `list` created with classic `for` loop:
+```python
+symbols = '$c£p`≠'
+codes = []
+for symbol in symbols:
+    codes.append(ord(symbol))
+```
+and here's a `list` created with a **List Comprehension**:
+```python
+codes = [ord(symbol) for symbol in symbols]
+```
+The `codes` variable will be in both cases:
+```
+[36, 99, 163, 112, 96, 8800]
+```
+List Comprehensions build lists from sequences or any other iterable type by filtering and transforming items. Indeed, the `filter` and `map` built-ins can be composed to do the same, but readability suffers, as we'll see now.
+With list comprehension:
+```python
+beyond_ascii = [ord(s) for s in symbols if ord(s) > 127]
+```
+and with `filter` and `map` functions:
+```python
+beyond_ascii = list(filter(lambda symbol: symbol > 127, map(ord, symbols)))
+```
+
+We can also use **Generator Expressions** to initialize tuple, arrays, and other types of sequences:
+```python
+import array
+symbols = '$c£p`≠'
+
+tuple_instance = tuple(ord(symbol) for symbol in symbols)
+array_instance = array.array("I", (ord(symbol) for symbol in symbols))
+
+print(tuple_instance)
+print(array_instance)
+```
+Output:
+```
+(36, 99, 163, 112, 96, 8800)
+array('I', [36, 99, 163, 112, 96, 8800])
+```
+Note that the first argument of the  `array` constructor defines the storage type used for the numbers in the array (`I` in our case).
+# Tuples are not just Immutable Lists
+**Tuples** as "immutable lists" is a simplification. Tuple can be used:
+* as immutable lists
+* as records with no field names (overlooked case)
+## Tuple as Records with no field names
+Tuple holds records: each item in the tuple holds the data for one field, and the position of the item gives its meaning. This means that the number of **items is usually fixed** and their **order is always important**. Indeed, if you think of Tuples just as immutable lists, the order of the items may or may not be important, and that's not the case.
+Example:
+```python
+lax_coordinates = (33.9425, -118.408056)
+city, year, pop, chg, area = ('Tokyo', 2003, 32_450, 0.66, 8014)
+```
+Note that in both expression, sorting the tuple would **destroy the information**.
+## Tuple as Immutable Lists
+Two benefits:
+* **Clarity**: when you see a `tuple` in code, you know its length will never change;
+* **Performance**: a `tuple` uses less memory than a `list` of the same length, and it allows Python to do some optimizations.
+> [!attention]
+> The **immutability** of a `tuple` only **applies to the references contained in it**. References in a tuple cannot be deleted or replaces. But, if one of those references points to a mutable object (like a `list`), and that object is changed, then the value of the `tuple` changes.
+
+![](Python/attachments/Pasted%20image%2020240615151912.png)
+```python
+a = (10, 'alpha', [1, 2])
+b = (10, 'alpha', [1, 2])
+
+print(a)
+print(b)
+print(a==b)
+```
+Output:
+```
+a = (10, 'alpha', [1, 2])
+b = (10, 'alpha', [1, 2])
+
+print(a)
+print(b)
+print(a==b)
+```
+But, if you change the list content inside the tuple `b`, this statement is no longer valid:
+```python
+b[-1].append(99)
+
+print(a)
+print(b)
+print(a==b)
+```
+Output:
+```
+(10, 'alpha', [1, 2])
+(10, 'alpha', [1, 2, 99])
+False
+```
+
+> [!attention]
+> **Tuples** with **mutable object** items can be **source of bugs**.
+
+As we'll see later on, an object is only **Hashable** if its value cannot ever change. An **Unhashable** tuple cannot be used as a key in a `dict` or as an element in a `set`.
+If you want to determine explicitly if a tuple (or any object) has a fixed value, you can use the `hash` built-in:
+```python
+def fixed(o):
+    try:
+        hash(o)
+    except TypeError:
+        return False
+    return True
+
+a = (10, 'alpha', [1,2])
+b = (10, 'alpha', (1,2))
+c = (10, 'alpha', {'key1': "value1"})
+d = (10, 'alpha', {'key2': [0,1]})
+e = (10, 'alpha', 99)
+
+print(fixed(a))
+print(fixed(b))
+print(fixed(c))
+print(fixed(d))
+print(fixed(e))
+```
+Output:
+```
+False
+True
+False
+False
+True
+```
+ 
+ Performance advantages of using Tuple as immutable lists are explained by Python Core developer at this link [link here](https://stackoverflow.com/questions/68630/are-tuples-more-efficient-than-lists-in-python/22140115#22140115). To summarize:
+ * To evaluate a tuple literal, the Python compiler generates bytecode for a tuple constant in one operation; but, for a list literal, the generated bytecode pushes each element as a separate constant to the data stack, and then builds the list.
+ * Given a tuple `t`, `tuple(t)` simply returns a reference to the same `t`, so there's no need to copy. In contrast, given a list `l`, the `list(l)` constructor must create a new copy of `l`.
+	```python
+	a = (10, 20, 30)
+	b = tuple(a)
+	
+	c = [10, 20, 30]
+	d = list(a)
+	
+	
+	print(a is b)
+	print(c is d)
+	```
+	Output:
+	```
+	True
+	False
+	```
+* Because of its fixed length, a `tuple` instance is allocated the exact memory space it needs. Instance of `lists`, on the other hand, are allocated with room to spare, to amortize the cost of future appends:
+	```python
+	import sys
+
+	print(sys.getsizeof(tuple(iter(range(10)))))
+	print(sys.getsizeof(list(iter(range(10)))))
+	```
+	Output:
+	```python
+	120
+	136
+	```
+* The references to the items in a tuple are stored in an array in the tuple struct, wgile a list holds a pointer to an array of references stored elsewhere. This indirection is necessary because when a list grows beyond the space currently allocated, Python needs to reallocate the array of references to make room.
+Note that `list` and `tuple` have different APIs.
+# Unpacking Sequences and Iterables
+**Unpacking** is important because it avoids unnecessary and error-prone use of indexes to extract elements from sequences. Unpacking works with any **iterable** object as the data source - including iterators, which don't support index notation.
+The most visible form of unpacking is **Parallel Assignment**: assign items from an iterable to a tuple of variables:
+```python
+lax_coordinates = (33.9425, -118.408056)
+latitude, longitude = lax_coordinates
+
+print(latitude)
+print(longitude)
+```
+Output:
+```
+33.9425
+-118.408056
+```
+An elegant application of unpacking is **Swapping the values of Variables** without using a temporary variable:
+```python
+b, a = a, b
+```
+Another example of unpacking is **Prefixing an argument with `*` when Calling a Function**:
+```python
+t = (20, 8)
+quotient, remainder = divmod(*t)
+
+print("quotient: ", quotient)
+print("remainder: ", remainder)
+```
+Output:
+```
+quotient: 2
+remainder: 4
+```
+if I had run the code:
+```python
+t = (20, 8)
+quotient, remainder = divmod(*t)
+```
+I would have obtained:
+```
+TypeError: divmod expected 2 arguments, got 1
+```
+## Using `*` to Grab Excess Items
+Defining function parameters with `*args` to grab arbitrary excess arguments is a classic Python feature:
+```python
+a, b, *rest = range(5)
+print(a, b, rest)
+
+a, b, *rest = range(3)
+print(a, b, rest)
+
+a, b, *rest = range(2)
+print(a, b, rest)
+
+a, *body, c, d = range(5)
+print(a, body, c, d)
+
+*head, b, c, d = range(5)
+print(head, b, c, d)
+```
+Output:
+```
+0 1 [2, 3, 4]
+0 1 [2]
+0 1 []
+0 [1, 2] 3 4
+[0, 1] 2 3 4
+```
+*More examples in the book*
+# Slicing
+A common feature of `list`, `tuple`, and `str`, and all sequence types in Python is the support of **Slicing Operations**.
+## Why Slices and Ranges Exclude the Last Item
+The Pythonic convention of excluding the last item in slices and ranges works well with zero-based indexing used in Python, C, and many other languages. Convenient features:
+* it's easy to see the length of a slice or range when only the stop position is given. For example both `range(3)` and `my_list[:3]` produce three items;
+* it's easy to compute the length of a slice or range when start and stop are given: `stop - start`. For example:
+	```python
+	my_list = [10, 20, 30, 40, 50, 60]
+	
+	sliced_list = my_list[2:5]
+	print(len(sliced_list))
+	```
+	Since `5-2=3` we expect `3`. Output:
+	```python
+	3
+	``` 
+* it's easy to split a sequence in two parts at any index `x`, without overlapping. For example:
+	```python
+	my_list = [10, 20, 30, 40, 50, 60]
+
+	print(my_list[:3])
+	print(my_list[3:])
+	```
+	Output:
+	```python
+	[10, 20, 30]
+	[40, 50, 60]
+	```
