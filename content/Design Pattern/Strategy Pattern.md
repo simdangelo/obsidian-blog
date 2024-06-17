@@ -1,6 +1,6 @@
 ---
 date: 2024-06-16
-modified: 2024-06-16T22:22:00+02:00
+modified: 2024-06-17T23:44:58+02:00
 ---
 ***Goal***: build a duck pond simulation game, where the game can show a large variety of duck species.
 
@@ -78,17 +78,33 @@ Here's the new `Duck` class:
 from abc import ABC, abstractmethod
 
 class QuackBehaviour(ABC):
-    @abstractmethod
-    def quack(self):
-        pass
+     @abstractmethod
+     def quack(self):
+          pass
 
 class FlyBehaviour(ABC):
-    @abstractmethod
-    def fly(self):
-        pass
+     @abstractmethod
+     def fly(self):
+          pass
 
+class Duck():
+    def __init__(self, quackBehaviour, flyBehaviour):
+        self.quackBehaviour = quackBehaviour
+        self.flyBehaviour = flyBehaviour
+
+    def performQuack(self):
+        self.quackBehaviour.quack()
+
+    def performFly(self):
+        self.flyBehaviour.fly()
+```
+To perform a quack (the same for fly), a Duck just asks the object that is referenced by `quackBehaviour` to `quack()` for it. So, we don't care what kind of object the concrete Duck is, all we care about is that it knows how to `quack()`.
+
+### How the `quackBehaviour` and `flyBehaviour` instance variable are set?
+Let's create concrete implementation of these behaviours and a specific type of duck called `MallardDuck`:
+```python
 class Quack(QuackBehaviour):
-	def quack():
+	def quack(self):
 		print("Quack! Quack!")
 
 class Squeak(QuackBehaviour):
@@ -106,35 +122,79 @@ class FlyWithWings(FlyBehaviour):
 class FlyNoWay(FlyBehaviour):
 	def fly(self):
 		print("I'm not able to fly.")
-		
 
-class Duck:
-    def __init__(self, quackBehaviour: QuackBehaviour, flyBehaviour: FlyBehaviour):
-        self.quackBehaviour = quackBehaviour
-        self.flyBehaviour = flyBehaviour
-
-    def performQuack(self):
-        self.quackBehaviour.quack()
-    
-    def performFly(self):
-        self.flyBehaviour.fly()
 
 class MallardDuck(Duck):
-	pass
+    def __init__(self):
+        super().__init__(quackBehaviour=Quack(), flyBehaviour=FlyWithWings())
+        
+    def display(self):
+        print("I'm a real Mallard Duck")
 ```
-Then:
+When a `MallardDuck` is instantiated, its constructor initializes the duck with specific behaviors: it sets the `quackBehaviour` to an instance of the `Quack` class, which defines the sound "Quack! Quack!", and the `flyBehaviour` to an instance of the `FlyWithWings` class, which defines the action of flying with wings. This setup allows the `MallardDuck` to perform its specific quacking and flying behaviors when the corresponding methods are called. Let's prove it:
 ```python
-quack_behaviour = Quack()
-fly_behaviour = FlyWithWings()
+aMallardDuck = MallardDuck()
 
-aDuck = MallardDuck(quackBehaviour=quack_behaviour, flyBehaviour=fly_behaviour)
-
-aDuck.performFly()
-aDuck.performQuack()
+aMallardDuck.performFly()
+aMallardDuck.performQuack()
 ```
 Output:
 ```
 I'm flying with wings.
 Quack! Quack!
 ```
-To perform a quack (the same for fly), a Duck just asks the object that is referenced by `quackBehaviour` to quack for it. So, we don't care what kind of object the concrede Duck is, all we care about is that it knows how to `quack()`.
+# Setting behaviour Dinamically
+It might be more useful to set the duck's behaviour type through a **setter method** on the Duck class, **rather than instantiating in in the duck's constructor**:
+```python
+class Duck():
+    def __init__(self, quackBehaviour, flyBehaviour):
+        self.quackBehaviour = quackBehaviour
+        self.flyBehaviour = flyBehaviour
+
+    def performQuack(self):
+        self.quackBehaviour.quack()
+
+    def performFly(self):
+        self.flyBehaviour.fly()
+
+    def setFlyBehaviour(self, fb):
+        self.flyBehaviour = fb
+
+    def setQuackBehaviour(self, qb):
+        self.quackBehaviour = qb
+```
+We can call these new methods anytime we want to change the behaviour of the duck. Let's prove that by creating a new duck class:
+```python
+class ModelDuck(Duck):
+    def __init__(self):
+        super().__init__(quackBehaviour=Quack(), flyBehaviour=FlyNoWay())
+        
+    def display(self):
+        print("I'm a real Model Duck")
+
+
+aModelDuck = ModelDuck()
+
+aModelDuck.performFly()
+aModelDuck.performQuack()
+```
+Output:
+```
+I'm not able to fly.
+Quack! Quack!
+```
+As expected, this new duck is not able to fly because its constructor sets the `flyBehaviour` to an instance of the `FlyNoWay`. But now we can dynamically change its flying behaviour:
+```python
+aModelDuck.setFlyBehaviour(FlyWithWings())
+
+aModelDuck.performFly()
+aModelDuck.performQuack()
+```
+Output:
+```
+I'm flying with wings.
+Quack! Quack!
+```
+# The Big Picture on Encapsulated behaviours
+
+![](Design%20Pattern/attachments/Design%20Pattern.drawio%201.svg)
