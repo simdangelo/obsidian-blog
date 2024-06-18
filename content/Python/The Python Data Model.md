@@ -1,9 +1,10 @@
 ---
+date: 2024-06-12
 tags:
   - python
   - datamodel
   - magicmethods
-modified: 2024-06-16T12:54:47+02:00
+modified: 2024-06-18T21:15:48+02:00
 ---
 # What we'll see
 * By implementing **Special Methods**, your objects can behave like the built-in types, enabling the expressive coding style the community considers Pythonic.

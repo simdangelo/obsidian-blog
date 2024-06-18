@@ -1,7 +1,7 @@
 ---
 title: Welcome to My Garden
 date: 2024-06-09
-modified: 2024-06-16T13:48:21+02:00
+modified: 2024-06-18T20:58:07+02:00
 ---
 
 I'm Simone, an **aspiring Software Engineer**. This website is my personal space, where I'll be documenting my journey in the vast realm of software engineering. 
@@ -15,6 +15,8 @@ For a more in-depth understanding of who I am and my plans for this blog, I invi
 Currently, I am in the process of migrating content from my old blog, which started in January 2024, to this new platform as of June 2024. This involves transferring posts, reorganizing content, and ensuring that everything is up-to-date, so some content may temporarily be missing.
 
 I have organized the content of this Garden into various topics and sections for easier navigation and a more focused exploration. Here are the main topics:
-* [Blog](Blog/index.md): In this section, I post everything that isn't technical learning notes.
-* [Python](Python/index.md): at the time of writing, it is a collection of notes I'm taking from the book "Fluent Python" by Luciano Ramalho. This book is an intermediate-level Python book. I'll expand this section with new notes but I'll need to organize the folders structure.
 * [Periodical Retrospective](Periodical%20Retrospective/index.md):  I will regularly post recaps every 2-3 months, reflecting on my professional life, highlighting what went well, and identifying areas for improvement.
+* [Blog](Blog/index.md): I post everything that isn't technical learning notes.
+* [Python](Python/index.md): at the time of writing, it is a collection of notes I'm taking from the book "Fluent Python" by Luciano Ramalho. This book is an intermediate-level Python book. I'll expand this section with new notes from other sources, but I'll need to organize the folders structure.
+* [Design Pattern](Design%20Pattern/index.md): at the time of writing, it is a collection of notes I'm taking from the book "Head First Design Pattern" by Eric Freeman & Elisabeth Robson. When the books need clarification or integration, I'll use videos from Christopher Okhravi's YouTube channel, which has a great playlist about design patterns: [Design Pattern Playlist by Christopher Okhravi](https://www.youtube.com/playlist?list=PLrhzvIcii6GNjpARdnO4ueTUAVR9eMBpc).
+* [Other](Other/index.md): this section contains scattered notes I have about Docker, Git, and other topics I study in the future.
