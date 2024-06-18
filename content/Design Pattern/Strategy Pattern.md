@@ -1,6 +1,6 @@
 ---
 date: 2024-06-16
-modified: 2024-06-17T23:44:58+02:00
+modified: 2024-06-18T20:45:55+02:00
 ---
 ***Goal***: build a duck pond simulation game, where the game can show a large variety of duck species.
 
@@ -196,5 +196,33 @@ I'm flying with wings.
 Quack! Quack!
 ```
 # The Big Picture on Encapsulated behaviours
-
+Here's the entire reworked class structure:
+* ducks extending `Duck` class;
+* fly behaviours implementing `FlyBehaviour` and quack behaviours implementing `QuackBehaviour`
 ![](Design%20Pattern/attachments/Design%20Pattern.drawio%201.svg)
+Note that different arrows represent different relationship between objects:
+* **IS-A** relationship:
+	* represents **Inheritance**;
+	* indicates that a subclass inherits behaviour and attributes from a superclass;
+	* example: a `MallardDuck` **is-a** `Duck`;
+	* it's represented by the following arrow:
+	![](Design%20Pattern/attachments/Design%20Pattern.drawio%20(1)%202.svg)
+* **HAS-A** relationship:
+	* represents **Composition**;
+	* indicates that a class contains or is composed of another class;
+	* example: a `Duck` **has-a** `FlyBehaviour`;
+	* it's represented by the following arrow:
+	![](Design%20Pattern/attachments/Design%20Pattern.drawio%20(2)%201.svg)
+# HAS-A is better than IS-A
+With the HAS-A relationship, each duck has a `FlyBehaviour` and a `QuackBehaviour` to which delegates flying and quacking.
+
+When you put two classes together like this you're using **Composition**. Instead of *inheriting* the behaviour, the ducks get their behaviour by being *composed* with the right behaviour object.
+
+> [!success] Third Design Principle
+> Favor **Composition** over Inheritance.
+
+# Strategy Pattern
+What we have applied is called **Strategy Pattern**.
+
+> [!summary] Strategy Pattern Definition
+> The **Strategy Pattern** defines a family of algorithms, encapsulates each one, and makes them interchangeable. Strategy lets the algorithm vary independently from clients that use it.
