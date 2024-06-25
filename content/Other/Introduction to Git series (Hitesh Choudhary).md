@@ -24,13 +24,13 @@ git --version
 
 Let’s see this diagram:
 
-![Untitled](Other/attachments2/Untitled.png)
+![Untitled](Other/attachments/Untitled%2089.png)
 
 This is the root folder and in this folder we have multiple folders. If I want some of these folders getting tracked, I need to specify to Git which folder it needs to track and which ones don’t.
 
 So, let’s create a test folder and create three different folders inside. Let’s say I want to track `gitone` and `gittwo` and not `gitthree`. If I use `git status`, it’ll say that there is no a git repository and that’s what we expected. It’s not suggested to initialize Git outside where you don’t want to track things, so let’s go first inside `gitone`. It’s always a good habit to type `git status`: 
 
-![Untitled](Other/attachments2/Untitled%201.png)
+![Untitled](Other/attachments/Untitled%201%201.png)
 
 Then, let’s initialize the Git software with:
 
@@ -40,7 +40,7 @@ git init
 
 If I’ll type again git status, I’ll have a different message than before:
 
-![Untitled](Other/attachments2/Untitled%202.png)
+![Untitled](Other/attachments/Untitled%202%201.png)
 
 The folder `gitone` is now being tracked by the Git.
 
@@ -48,7 +48,7 @@ Note that you always run `git init` only one time in a project because, once the
 
 What `git init` does is it creates a `.git` hidden folder that keeps track of all files and sub-folders. Let’s go inside this folder to look at the files it contains:
 
-![Untitled](Other/attachments2/Untitled%203.png)
+![Untitled](Other/attachments/Untitled%203%201.png)
 
 All these folders are going to grow up as we bring more files into these folders, but you never ever go into `.git` folder and do any changes manually.
 
@@ -62,7 +62,7 @@ Before visualizing the entire workflow of the Git, let’s highlight two points:
 
 Let’s finally visualize the entire workflow of the Git schematically:
 
-![Untitled](Other/attachments2/Untitled%204.png)
+![Untitled](Other/attachments/Untitled%204%201.png)
 
 - **Working directory**: we have to make a working directory, meaning that we need to initialize Git in a specific directory.
 - `git add`: this is not a complete command because you have to mention the file name/names you want to track with Git.
@@ -77,13 +77,13 @@ Let’s finally visualize the entire workflow of the Git schematically:
 
 We’re going to understand this part:
 
-![Untitled](Other/attachments2/Untitled%205.png)
+![Untitled](Other/attachments/Untitled%205%201.png)
 
 As we already mentioned, `git status` is the first command you should always run in every folder to check out whether that folder is already initalized with the Git or we need to do some initialization.
 
 Let’s see again what git status returns in an already-initialized folder:
 
-![Untitled](Other/attachments2/Untitled%206.png)
+![Untitled](Other/attachments/Untitled%206%201.png)
 
 Note that in an initialized folder you always be on a branch (like `master`, `main`, `checkout`, `feature`, etc.). Right now we are in the master `branch`.
 
@@ -95,7 +95,7 @@ touch testone.txt testtwo.txt
 
 Now, let’s check `git status` again:
 
-![Untitled](Other/attachments2/Untitled%207.png)
+![Untitled](Other/attachments/Untitled%207%201.png)
 
 It returns:
 
@@ -112,7 +112,7 @@ git add testone.txt
 
 The result of `git status` is:
 
-![Untitled](Other/attachments2/Untitled%208.png)
+![Untitled](Other/attachments/Untitled%208%201.png)
 
 - `testone.txt` is being tracked and it’s ready to be committed
 - there is still one untracked file (`testtwo.txt`)
@@ -127,21 +127,21 @@ git commit -m "add file one"
 
 It returns this message:
 
-![Untitled](Other/attachments2/Untitled%209.png)
+![Untitled](Other/attachments/Untitled%209%201.png)
 
 Looking at the entire workflow, now we are in the **Repo** stage:
 
-![Untitled](Other/attachments2/Untitled%2010.png)
+![Untitled](Other/attachments/Untitled%2010%201.png)
 
 Let’s see what `git status` returns:
 
-![Untitled](Other/attachments2/Untitled%2011.png)
+![Untitled](Other/attachments/Untitled%2011%201.png)
 
 Now Git is only worried about `testtwo.txt` because `testone.txt` is already gone in the Repo zone, meaning that is is tracked and everything in this file is updated (nothing is changed from the last checkpoint).
 
 If you open gitone folder with VSCode and look inside the Git Lens extension, you’ll see:
 
-![Untitled](Other/attachments2/Untitled%2012.png)
+![Untitled](Other/attachments/Untitled%2012%201.png)
 
 Now, let’s do the same we already done with `testtwo.txt`:
 
@@ -152,13 +152,13 @@ git commit
 
 Note that I didn’t insert the message, which is mandatory, as we already said. What happens is:
 
-![Untitled](Other/attachments2/Untitled%2013.png)
+![Untitled](Other/attachments/Untitled%2013%201.png)
 
 Press `i` to insert the message, then `ESC`, then type `:wq` (`w` to write, `q` to quit), then hit `ENTER`.
 
 Now, in Git Lens there are two commits:
 
-![Untitled](Other/attachments2/Untitled%2014.png)
+![Untitled](Other/attachments/Untitled%2014%201.png)
 
 Note that if you hit:
 
@@ -176,11 +176,11 @@ git log
 
 it returns:
 
-![Untitled](Other/attachments2/Untitled%2015.png)
+![Untitled](Other/attachments/Untitled%2015%201.png)
 
 Note that each commit that we made has a commit id, which is also visible in VSCode, but here’s is shorter version of the original one:
 
-![Untitled](Other/attachments2/Untitled%2016.png)
+![Untitled](Other/attachments/Untitled%2016%201.png)
 
 If we’ll type instead:
 
@@ -190,7 +190,7 @@ git log --oneline
 
 It returns the same shorter commit id version as VSCode:
 
-![Untitled](Other/attachments2/Untitled%2017.png)
+![Untitled](Other/attachments/Untitled%2017%201.png)
 
 Some notes about **commit message**:
 
@@ -242,7 +242,7 @@ cat .gitconfig
 
 This what it returns:
 
-![Untitled](Other/attachments2/Untitled%2018.png)
+![Untitled](Other/attachments/Untitled%2018%201.png)
 
 You can open this file and modify the content.
 
@@ -264,19 +264,19 @@ MONGODBURI = testurlpath
 
 Now, if we look at `git status`, we get:
 
-![Untitled](Other/attachments2/Untitled%2019.png)
+![Untitled](Other/attachments/Untitled%2019%201.png)
 
 If you have lots of files to add to the staging area, but you also have the file containing sensitive information, you cannot use `git add .` safely. So, open the `.gitignore` file and list all the files which you don’t want to keep a track of them:
 
-![Untitled](Other/attachments2/Untitled%2020.png)
+![Untitled](Other/attachments/Untitled%2020%201.png)
 
 Now, let’s check again `git status`:
 
-![Untitled](Other/attachments2/Untitled%2021.png)
+![Untitled](Other/attachments/Untitled%2021%201.png)
 
 Git is no longer keeping a track of `.env` file. Now we can use `git add .` and let’s see again `git status`:
 
-![Untitled](Other/attachments2/Untitled%2022.png)
+![Untitled](Other/attachments/Untitled%2022%201.png)
 
 Now Git is tracking `.gitignore` file because we add it into the staging area. Let’s create some more files just to look better at the situation with `touch testthree.txt testfour.txt`. Then use `git add .` and commit them.
 
@@ -286,35 +286,35 @@ How will I know in thousands and thousands of files in my project which files sh
 
 Let’s look again at the commits made so far:
 
-![Untitled](Other/attachments2/Untitled%2023.png)
+![Untitled](Other/attachments/Untitled%2023%201.png)
 
 The long unique commit id that each commit has is known as Hash and it’s generated not randomly, but following some algorithms. In the Git ecosystem every commit is dependent on the previous commit except the first commit and this phenomenon is not shown in the `git log --oneline`.
 
-![Untitled](Other/attachments2/Untitled%2024.png)
+![Untitled](Other/attachments/Untitled%2024%201.png)
 
 Behind the scenes, besides the Hash code, each commit has information about the **parent**, that represents the previous commit (of course the first commit has no parents). The hash of the second commit is generated based on the hash and the information of the previous parent commit.
 
 Let’s go inside the `.git` hidden folder (that is visible in the terminal only if you type `ls -la`) and let’s run `ls -la` and let’s see the result:
 
-![Untitled](Other/attachments2/Untitled%2025.png)
+![Untitled](Other/attachments/Untitled%2025%201.png)
 
 Let’s look at those files and folder directly in VSCode. To make it visible in VSCode, type `command+,` and then click on the x on `**/.git`
 
-![Untitled](Other/attachments2/Untitled%2026.png)
+![Untitled](Other/attachments/Untitled%2026%201.png)
 
 Let’s look at some of the files in the `.git` folder.
 
 - `COMMIT_EDITSMG` file, that is the file that opens up when you hit `git commit` without the message:
     
-    ![Untitled](Other/attachments2/Untitled%2027.png)
+    ![Untitled](Other/attachments/Untitled%2027%201.png)
     
 - `HEAD` file, which is pointing towards the **master**. As we already mentioned, in Git we always are on some branch and now we are on master branch:
     
-    ![Untitled](Other/attachments2/Untitled%2028.png)
+    ![Untitled](Other/attachments/Untitled%2028%201.png)
     
 - `hooks` folder, that is one of the most advanced folder in Git. If you need to execute some code just before the commit or just after the commit message or you want to control how the commit message actually goes (maybe you want to add the ticket IDs and you want to validate that whether whoever is committing the message is providing the ticket ID for solving this bug), you can actually do all of this through here. There are some samples that you can change:
     
-    ![Untitled](Other/attachments2/Untitled%2029.png)
+    ![Untitled](Other/attachments/Untitled%2029%201.png)
     
 
 ---
@@ -335,11 +335,11 @@ git branch
 
 It returns an asterisk pointer which is pointing towards the master:
 
-![Untitled](Other/attachments2/Untitled%2030.png)
+![Untitled](Other/attachments/Untitled%2030%201.png)
 
 **Branch**: think of branch as an alternative timeline and every single coder who is contributing to the same code base can be on its own timeline without affecting each other’s timeline.
 
-![Untitled](Other/attachments2/Untitled%2031.png)
+![Untitled](Other/attachments/Untitled%2031%201.png)
 
 There is always one branch on which you will be. By default, Git always by default creates a **master** as a branch (which is the green one in the image above), and all those nodes are the commits (checkpoints) that we have made. Nowadays nobody likes to call it as master, so it’s pretty obvious that you will be asked to rename your branch as **main**.
 
@@ -359,7 +359,7 @@ git branch nav-bar
 
 and look again at `git branch`:
 
-![Untitled](Other/attachments2/Untitled%2032.png)
+![Untitled](Other/attachments/Untitled%2032%201.png)
 
 The pointer is still pointing towards the `master` branch, but there is the new branch.
 
@@ -371,25 +371,25 @@ git checkout nav-bar
 
 Now, the pointer is pointing to `nav-bar` branch:
 
-![Untitled](Other/attachments2/Untitled%2033.png)
+![Untitled](Other/attachments/Untitled%2033%201.png)
 
 If we look at the `HEADS` file, we can see that the it’s pointing to the `nav-bar` branch:
 
-![Untitled](Other/attachments2/Untitled%2034.png)
+![Untitled](Other/attachments/Untitled%2034%201.png)
 
 If we look at the `.git/refs/heads/` folder we have a new file called `nav-bar` as well as `master` that contain a string representing the commit id each branch is pointing to:
 
-![Untitled](Other/attachments2/Untitled%2035.png)
+![Untitled](Other/attachments/Untitled%2035%201.png)
 
 They contains the same commit id because the parent commit is the same. This is better visible on Git Lens where `master` and `nav-bar` branches are on the same line pointing to the same location:
 
-![Untitled](Other/attachments2/Untitled%2036.png)
+![Untitled](Other/attachments/Untitled%2036%201.png)
 
 Now that we are in the nav-bar branch, let’s create a new file called `nav-bar.html` and put something inside. Let’s add the new file in staging area, then commit it with `git commit -m "add navbar to code base"`.
 
 From Git Lens we can see that the `nav-bar` branch is moved a little bit ahead and `master` is still at the same position (note the blue circle close to the branch name indicates the branch you currently are on):
 
-![Untitled](Other/attachments2/Untitled%2037.png)
+![Untitled](Other/attachments/Untitled%2037%201.png)
 
 If we change again the branch with `git checkout master`, we’ll see that the `nav-bar.html` file is no longer in the project folder because you can suppose it’s a file added by another coder who is working on its own timeline.
 
@@ -397,7 +397,7 @@ Let’s create a new file called `hero-section.html` and put something inside. T
 
 The situation we are currently at is the one highlighted by the red laser:
 
-![Untitled](Other/attachments2/Untitled%2038.png)
+![Untitled](Other/attachments/Untitled%2038%201.png)
 
 Suppose the green timeline as the `master` branch and the blue one as the `nav-bar` branch. They’re completely different timeline, different code bases, different files.
 
@@ -405,15 +405,15 @@ Suppose the green timeline as the `master` branch and the blue one as the `nav-b
 
 Let’s talk about the **Head**. Head always points to where the branch is currently at. It’s not always necessary that the Head is pointing towards the end often the branch. Usually it does, but you can actually allow your Head to point a commit back as well because it’s a checkpoint:
 
-![Untitled](Other/attachments2/Untitled%2039.png)
+![Untitled](Other/attachments/Untitled%2039%201.png)
 
 The idea behind Head concept came from the image of cassettes where you have a head which plays onto that and if, you flip these cassettes, this head is still pointing towards wherever you left it last time (*I don’t understand this sentence*). Now that I am on the master `branch`, the `HEAD` file in the `.git` folder shows that the head is pointing to the latest commit of the master `branch`:
 
-![Untitled](Other/attachments2/Untitled%2040.png)
+![Untitled](Other/attachments/Untitled%2040%201.png)
 
 How can I know that is this the latest commit? Let’s look a the `master` file into the `.git/refs/heads/` folder and then let’s compare it to what we’ll see after running `git log --online`:
 
-![Untitled](Other/attachments2/Untitled%2041.png)
+![Untitled](Other/attachments/Untitled%2041%201.png)
 
 The commit id is exactly the same. We can also forcefully ask Git to point to another commit (like the `34f80d7` one) and we’ll see how to do that.
 
@@ -451,13 +451,13 @@ There are two types of Merging Branches:
 
 - **fast-forwards merging**, in which the main branch doesn’t do much because you just work entirely on to a separate brunch and then you merge that branch into the `master` one (suppose the green branch as the `master`):
     
-    ![Untitled](Other/attachments2/Untitled%2042.png)
+    ![Untitled](Other/attachments/Untitled%2042%201.png)
     
     This is the easiest merging type.
     
 - **not fast-forwards merging**, in which both master and alternative branches are working and eventually at some point of time you want to pack into a unique branch:
     
-    ![Untitled](Other/attachments2/Untitled%2043.png)
+    ![Untitled](Other/attachments/Untitled%2043%201.png)
     
     In order to make this merge, it’s ideal to be on the `master` branch and bring the alternative timeline into that.
     
@@ -472,35 +472,35 @@ git branch nav-bar
 
 What you’ll see in the terminal is:
 
-![Untitled](Other/attachments2/Untitled%2044.png)
+![Untitled](Other/attachments/Untitled%2044%201.png)
 
 VSCode automatically opens a specific file and the terminal is waiting because I haven’t passed any message for this operation. The default message it gives to me is:
 
-![Untitled](Other/attachments2/Untitled%2045.png)
+![Untitled](Other/attachments/Untitled%2045%201.png)
 
 Merge requires a message because it’s creating a new node in the timeline:
 
-![Untitled](Other/attachments2/Untitled%2046.png)
+![Untitled](Other/attachments/Untitled%2046%201.png)
 
 So let’s save the message and, as soon as you close `MERGE_MSG` file, let’s look at the terminal output:
 
-![Untitled](Other/attachments2/Untitled%2047.png)
+![Untitled](Other/attachments/Untitled%2047%201.png)
 
 The output is pretty clear: 1 file is changed (nav-bar.html file is added) and the modifications are only insertions (this is what the `++++++` symbols mean), no deletions.
 
 Let’s look at the `git status` output:
 
-![Untitled](Other/attachments2/Untitled%2048.png)
+![Untitled](Other/attachments/Untitled%2048%201.png)
 
 From this output we can see that also **all the commits that were made on the `nav-bar` branch (in our case only one) are also part of the `master` branch**.
 
 This is better visible from Git Lens:
 
-![Untitled](Other/attachments2/Untitled%2049.png)
+![Untitled](Other/attachments/Untitled%2049%201.png)
 
 After merging the two branches, we have all the files coming from the two branches into a unique branch:
 
-![Untitled](Other/attachments2/Untitled%2050.png)
+![Untitled](Other/attachments/Untitled%2050%201.png)
 
 ## 4.5. Delete branches
 
@@ -512,7 +512,7 @@ git branch -d nav-bar
 
 which **deletes** the `nav-bar` branch because that branches it’s no longer useful for us. This command doesn’t delete the history of itself indeed the Git Lens show the same graph as before, but the `git log --oneline`  output is a little bit different:
 
-![Untitled](Other/attachments2/Untitled%2051.png)
+![Untitled](Other/attachments/Untitled%2051%201.png)
 
 ## 4.6. Exercise: fast-forward merge
 
@@ -524,7 +524,7 @@ git merge footer
 
 That’s what we see:
 
-![Untitled](Other/attachments2/Untitled%2052.png)
+![Untitled](Other/attachments/Untitled%2052%201.png)
 
 ## 4.7. Conflicts
 
@@ -536,21 +536,21 @@ In this situation the same file `index.html` is different between `master` and f
 
 Whenever such conflicts happen, we have to deal with a specific **diagram** like this one:
 
-![Untitled](Other/attachments2/Untitled%2053.png)
+![Untitled](Other/attachments/Untitled%2053%201.png)
 
 The green line (or the HEAD) is actually going to be pointing towards the branch your are currently are on (`master` in our case). Everything above those equal signs is part of the `master` branch, while anything below is some code coming from another branch (`footer` in our case). Here you have to decide how to solve this conflict: you can keep the first code, you can keep the second one, or you can keep both.
 
 Let’s do that. Checkout to the master branch, then merge the two branches. What the terminal returns is:
 
-![Untitled](Other/attachments2/Untitled%2054.png)
+![Untitled](Other/attachments/Untitled%2054%201.png)
 
 Automatically, VSCode opens this window:
 
-![Untitled](Other/attachments2/Untitled%2055.png)
+![Untitled](Other/attachments/Untitled%2055%201.png)
 
 Then manually do your choice by keeping the code you want, like:
 
-![Untitled](Other/attachments2/Untitled%2056.png)
+![Untitled](Other/attachments/Untitled%2056%201.png)
 
 Then save the file, then go back to the terminal, then hit `git add .`, then `git commit -m "merged footer branch"`, and now everything works fine.
 
@@ -574,7 +574,7 @@ git diff --staged
 
 What we’ll see is:
 
-![Untitled](Other/attachments2/Untitled%2057.png)
+![Untitled](Other/attachments/Untitled%2057%201.png)
 
 - `diff --git a/index.html b/index.html`: it is saying that it’s checking between a file `a` and a file `b`, where both are `index.html` file.
 - `--- a/index.html` and  `+++ b/index.html`: this doesn’t mean that code is being removed or being added. Those symbols are just used to represent the two file versions.
@@ -582,7 +582,7 @@ What we’ll see is:
 
 Let’ change now the `footer.html` file, then add it, then look again at the difference:
 
-![Untitled](Other/attachments2/Untitled%2058.png)
+![Untitled](Other/attachments/Untitled%2058%201.png)
 
 It’s the same as before, but now we are comparing two files, not only one. Then commit the modifications.
 
@@ -590,7 +590,7 @@ It’s the same as before, but now we are comparing two files, not only one. The
 
 Let’s see the logs:
 
-![Untitled](Other/attachments2/Untitled%2059.png)
+![Untitled](Other/attachments/Untitled%2059%201.png)
 
 So, you can see difference between two specific commits:
 
@@ -610,7 +610,7 @@ git diff 1e768f0..b957965
 - switch to another branch (i.e. `bugfix` branch) and work on it (in our code change `footer.html` file);
 - I will not be able to move to `main` branch without commit those changes.
 
-![Untitled](Other/attachments2/Untitled%2060.png)
+![Untitled](Other/attachments/Untitled%2060%201.png)
 
 How to go back into the `main` branch without committing changes into `bugfix` branch? Commands that we’ll use are:
 
@@ -625,11 +625,11 @@ git stash
 
 Here’s the terminal output:
 
-![Untitled](Other/attachments2/Untitled%2061.png)
+![Untitled](Other/attachments/Untitled%2061%201.png)
 
 Now, I’m able to switch branch:
 
-![Untitled](Other/attachments2/Untitled%2062.png)
+![Untitled](Other/attachments/Untitled%2062%201.png)
 
 But If now I’ll try to go back to `bugfix` branch, we’ll see that the modifications I did before are not there. That’s because I have stashed those changes, meaning that it’s like a temporary shelf where you can keep your code and move around and then go back, but now you have to brings things back from that shelf. So bring our modification back:
 
@@ -639,7 +639,7 @@ git stash pop
 
 The result:
 
-![Untitled](Other/attachments2/Untitled%2063.png)
+![Untitled](Other/attachments/Untitled%2063%201.png)
 
 If we now look at the code, we can see that the modifications are back.
 
@@ -647,13 +647,13 @@ If I stash some modifications in a particular branch, is it possible to pop thos
 
 Let’s modify again the `footer.html` file and then use the `git stash` command. Now move to the `master` branch and hit `git stash pop`. It works and here’s the result:
 
-![Untitled](Other/attachments2/Untitled%2064.png)
+![Untitled](Other/attachments/Untitled%2064%201.png)
 
 So, stash is not limited to a specific branch, but stash can be moved between different branches.
 
 Let’s stash again modification you have just popped and then hit `git stash list`:
 
-![Untitled](Other/attachments2/Untitled%2065.png)
+![Untitled](Other/attachments/Untitled%2065%201.png)
 
 In this case you can specify the stash you want to pop with:
 
@@ -661,7 +661,7 @@ In this case you can specify the stash you want to pop with:
 git stash apply stash@{0}
 ```
 
-![Untitled](Other/attachments2/Untitled%2066.png)
+![Untitled](Other/attachments/Untitled%2066%201.png)
 
 Stash should be used only temporarily and it must be used very carefully when you work in collaboration with other developer.
 
@@ -677,19 +677,19 @@ Stash should be used only temporarily and it must be used very carefully when yo
     
     Here’s the output:
     
-    ![Untitled](Other/attachments2/Untitled%2067.png)
+    ![Untitled](Other/attachments/Untitled%2067%201.png)
     
     Look at the last line: that’s what we said before, that is `HEAD` file is now pointing to this commit id:
     
-    ![Untitled](Other/attachments2/Untitled%2068.png)
+    ![Untitled](Other/attachments/Untitled%2068%201.png)
     
     Furthermore if you type `git branch`:
     
-    ![Untitled](Other/attachments2/Untitled%2069.png)
+    ![Untitled](Other/attachments/Untitled%2069%201.png)
     
     How can I go back now? If I run `git log --oneline`, I cannot see the commit id I was before:
     
-    ![Untitled](Other/attachments2/Untitled%2070.png)
+    ![Untitled](Other/attachments/Untitled%2070%201.png)
     
     To go back where you were, just run:
     
@@ -741,7 +741,7 @@ If we look at the log of both `master` and `bugfix` branches, we can notice that
 
 The current timeline situation is:
 
-![Untitled](Other/attachments2/Untitled%2071.png)
+![Untitled](Other/attachments/Untitled%2071%201.png)
 
 Be sure not to be on `master` branch and move to `bugfix` branch and then run:
 
@@ -753,7 +753,7 @@ meaning that you’re rebasing the `bugfix` branch with the `master` one.
 
 The timeline is rewritten:
 
-![Untitled](Other/attachments2/Untitled%2072.png)
+![Untitled](Other/attachments/Untitled%2072%201.png)
 
 (to be finished)
 
@@ -767,13 +767,13 @@ You cannot work with the terminal using your email and password because GitHub w
 
 Since we want to connect our system with GitHub we want to have an SSH key on our system and an SSH key on the GitHub settings page. So the two links you have to open to do that are the following ones:
 
-![Untitled](Other/attachments2/Untitled%2073.png)
+![Untitled](Other/attachments/Untitled%2073%201.png)
 
 Let’s move to `gitthree` folder and let’s initialize a git repository. Then create a new file called `index.html` and put something inside, then add it to the staging area and then commit it.
 
 Go in your GitHub account and create a new repository that we call `learn-git`. After creating you’ll see:
 
-![Untitled](Other/attachments2/Untitled%2074.png)
+![Untitled](Other/attachments/Untitled%2074%201.png)
 
 - `echo "# learn-git"  >> README.md`: appends the text `# learn-git` to the end of the file named README.md in the current directory. If the file doesn't exist, the **`>>`** operator will create it.
 - `git init`: it initialize a new Git repository.
@@ -792,13 +792,13 @@ Go in your GitHub account and create a new repository that we call `learn-git`. 
 
 Let’s create a `README.md` file in the project directory, then write something inside, add it, commit it, and push it. If you open the repository on GitHub, you’ll notice that GitHub picks up that file and shows it on the homepage of the repository:
 
-![Untitled](Other/attachments2/Untitled%2075.png)
+![Untitled](Other/attachments/Untitled%2075%201.png)
 
 ## 7.3. Other commands
 
 `git pull <remote repository url>`: it brings the code from a specific remote repository onto your system. To use it, go into a public repository on GitHub like the following one:
 
-![Untitled](Other/attachments2/Untitled%2076.png)
+![Untitled](Other/attachments/Untitled%2076%201.png)
 
 then copy the HTTPS url (or the SSH url), then go to the terminal into a specific directory where you want to clone that project, then run:
 
@@ -812,7 +812,7 @@ In this context `git pull` and `git fetch` both actually bring the code from the
 
 Look at this diagram:
 
-![Untitled](Other/attachments2/Untitled%2077.png)
+![Untitled](Other/attachments/Untitled%2077%201.png)
 
 - `git fetch`: brings new updates from Remote Repository into your Local Repository, but it doesn’t bring into your working area yet.
 - `git pull`: brings new updates from Remote Repository into your Working Area. Think of it as `git pull = git fetch + git merge`.
