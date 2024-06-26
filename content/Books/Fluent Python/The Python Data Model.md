@@ -226,7 +226,7 @@ True
 ## Collection API
 The following is the interfaces of the essential collection types in Python. All these classes are ABCs - *abstract base classes*.
 Method names in italic are abstract; the remaining have concrete implementations.
-![](Python/attachments/Pasted%20image%2020240612232007.png)The **`Collection`** abstract class in the figure unifies the three essential interfaces that every collection should implement:
+![](Books/Fluent%20Python/attachments/Pasted%20image%2020240612232007.png)The **`Collection`** abstract class in the figure unifies the three essential interfaces that every collection should implement:
 * **`Iterable`** to support `for`, `unpacking`, and other forms of iteration;
 * **`Sized`** to support the `len()`built-in function;
 * **`Container`** to support the `in` operator.

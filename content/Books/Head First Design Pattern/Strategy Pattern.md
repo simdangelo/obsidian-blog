@@ -1,26 +1,27 @@
 ---
 date: 2024-06-16
-modified: 2024-06-18T20:45:55+02:00
+modified: 2024-06-21T19:53:05+02:00
 ---
 ***Goal***: build a duck pond simulation game, where the game can show a large variety of duck species.
 
 # Problems and Potential Solutions
 ---
 ***Solution***: Let's use standard OO techniques and created one **Duck Superclass** from which **all other duck types inherit**:
-![](Design%20Pattern/attachments/Design%20Pattern.drawio%20(1).svg)
+
+![](Books/Head%20First%20Design%20Pattern/attachments/Design%20Pattern.drawio%20(1).svg)
 * All ducks quack and swim. The superclass takes care of the implementation code;
 * the `display()` method is abstract, since all duck subtypes look different;
 * each subtype is responsible for implementing its own `display()` behaviour;
 
 Now we want to provide the ducks the ability to fly. We add this new method in the `Duck` superclass:
-![](Design%20Pattern/attachments/Design%20Pattern.drawio%20(2).svg)
+![](Books/Head%20First%20Design%20Pattern/attachments/Design%20Pattern.drawio%20(2).svg)
 
 ---
 
 ***Problem***: by putting `fly()` in the superclass, he gave the flying ability to ALL ducks including those that shouldn't fly. Moreover, some ducks (such as wooden decoy and rubber ducks don't even quack).
 
 ***Solution***: override `fly` and `quack` methods:
-![](Design%20Pattern/attachments/Design%20Pattern.drawio%20(3).svg)
+![](Books/Head%20First%20Design%20Pattern/attachments/Design%20Pattern.drawio%20(3).svg)
 
 ---
 
@@ -29,7 +30,8 @@ Now we want to provide the ducks the ability to fly. We add this new method in t
 >**Inheritance** probably wasn't the answer.
 
 ***Solution***: we need a clearer way to have only some (but not all) of the duck types fly or quack. We can take the `fly()` and `quack()` out of the `Duck` superclass, and make `Flyable` and `Quackable` **interfaces** with respective methods so that only the ducks that are supposed to fly will implement that interface and have those methods:
-![](Design%20Pattern/attachments/Design%20Pattern.drawio%20(8)%201.svg)
+
+![](Books/Head%20First%20Design%20Pattern/attachments/Design%20Pattern.drawio%20(8).svg)
 
 ---
 ***Problem***: abstracting flying and quacking behaviour solves part of the problem (no inappropriately flying rubber ducks), but it makes the maintenance a nightmare. Indeed:
@@ -55,7 +57,7 @@ What we want to do is:
 > Program to an interface, not an implementation.
 
 We'll use an **interface** to represent each behaviour (such as `FlyBehaviour` and `QuackBehaviour`), and each implementation of a behaviour will implement one of those interfaces:
-![](Design%20Pattern/attachments/Design%20Pattern.drawio%20(6).svg)
+![](Books/Head%20First%20Design%20Pattern/attachments/Design%20Pattern.drawio%20(6).svg)
 
 With this approach, the Duck subclasses will use a behaviour represented by an **interface** (`FlyBehaviour` and `QuackBehaviour`), so that the **actual implementation** of the behaviour won't be locked into the Duck subclasses.
 > [!TIP] New Approach
@@ -71,7 +73,7 @@ With this approach, the Duck subclasses will use a behaviour represented by an *
 Here's the key: a Duck will now delegates its flying and quacking behaviours, instead of using quacking and flying methods defined in the Duck class (or subclass).
 ### Add instance variables of type `FlyBehaviour`and `QuackBehaviour`
 Here's the new `Duck` class:
-![](Design%20Pattern/attachments/Design%20Pattern.drawio%20(7).svg)
+![](Books/Head%20First%20Design%20Pattern/attachments/Design%20Pattern.drawio%20(7).svg)
 * each concrete duck object will assign to `FlyBehaviour` and `QuackBehaviour` variables a specific behaviour at runtime, like `FlyWithWings`.
 ### Implement `performQuack` and `performFly`
 ```python
@@ -199,20 +201,20 @@ Quack! Quack!
 Here's the entire reworked class structure:
 * ducks extending `Duck` class;
 * fly behaviours implementing `FlyBehaviour` and quack behaviours implementing `QuackBehaviour`
-![](Design%20Pattern/attachments/Design%20Pattern.drawio%201.svg)
+![](Books/Head%20First%20Design%20Pattern/attachments/Design%20Pattern.drawio%201.svg)
 Note that different arrows represent different relationship between objects:
 * **IS-A** relationship:
 	* represents **Inheritance**;
 	* indicates that a subclass inherits behaviour and attributes from a superclass;
 	* example: a `MallardDuck` **is-a** `Duck`;
 	* it's represented by the following arrow:
-	![](Design%20Pattern/attachments/Design%20Pattern.drawio%20(1)%202.svg)
+	![](Books/Head%20First%20Design%20Pattern/attachments/Design%20Pattern.drawio%20(1)%202.svg)
 * **HAS-A** relationship:
 	* represents **Composition**;
 	* indicates that a class contains or is composed of another class;
 	* example: a `Duck` **has-a** `FlyBehaviour`;
 	* it's represented by the following arrow:
-	![](Design%20Pattern/attachments/Design%20Pattern.drawio%20(2)%201.svg)
+	![](Books/Head%20First%20Design%20Pattern/attachments/Design%20Pattern.drawio%20(2)%201.svg)
 # HAS-A is better than IS-A
 With the HAS-A relationship, each duck has a `FlyBehaviour` and a `QuackBehaviour` to which delegates flying and quacking.
 

@@ -3,7 +3,7 @@ date: 2024-06-13
 tags:
   - python
   - sequences
-modified: 2024-06-16T14:22:41+02:00
+modified: 2024-06-19T23:13:28+02:00
 ---
 # Sequences Introduction
 Sequences in Python (such as **strings**, **bytes**, **lists**, **tuples**, arrays, etc.) result share a rich set of common operations, including **iteration**, **slicing**, **sorting**, and **concatenation**.
@@ -13,7 +13,7 @@ Sequences in Python (such as **strings**, **bytes**, **lists**, **tuples**, arra
 The standard library offers a rich selection of sequence types implemented in C:
 * **Container Sequences**: can hold items of different types, including nested containers (i.e. `list`, `tuple`, `collections.deque`); they hold references to the objects they contains in their own memory space.
 * **Flat Sequences**: can hold items of one simple types (i.e. `str`, `bytes`, `arra.array`); they contain the value of its contents it their own memory space.
-![](Python/attachments/Pasted%20image%2020240613193951.png)
+![](Books/Fluent%20Python/attachments/Pasted%20image%2020240613193951.png)
 > [!custom]- Additional Material
 > More on "How variables works in Python" at this link: https://www.youtube.com/watch?v=Bz3ir-vKqkk&ab_channel=Sreekanth
 
@@ -22,7 +22,7 @@ Another way of grouping sequencee types is by mutability:
 * **Immutable Sequences**: like `tuple`, `str`, and `bytes`.
 A **Mutable Object** is an object that can have its value modified **in-place**.
 Here's how mutable sequence inherit all methods from immutable sequences, and implement several additional methods:
-![](Python/attachments/Pasted%20image%2020240613195549.png)The built-in concrete sequence types do not actually subclass the `Sequence` and `MutableSequence` abstract base classes, but they're virtual subclasses registered with those ABCs (*what does that mean? I don't understand*).
+![](Books/Fluent%20Python/attachments/Pasted%20image%2020240613195549.png)The built-in concrete sequence types do not actually subclass the `Sequence` and `MutableSequence` abstract base classes, but they're virtual subclasses registered with those ABCs (*what does that mean? I don't understand*).
 A quick way to build a sequence is using a **List Comprehensions** (aka **listcomps**) if the target is a `list`, or a **Generator Expression** (aka **genexps**) for other kind of sequences.
 # List Comprehensions and Generator Expressions
 `list` is the most fundamental sequence type.
@@ -87,7 +87,7 @@ Two benefits:
 > [!attention]
 > The **immutability** of a `tuple` only **applies to the references contained in it**. References in a tuple cannot be deleted or replaces. But, if one of those references points to a mutable object (like a `list`), and that object is changed, then the value of the `tuple` changes.
 
-![](Python/attachments/Pasted%20image%2020240615151912.png)
+![](Books/Fluent%20Python/attachments/Pasted%20image%2020240615151912.png)
 ```python
 a = (10, 'alpha', [1, 2])
 b = (10, 'alpha', [1, 2])
@@ -283,3 +283,33 @@ The Pythonic convention of excluding the last item in slices and ranges works we
 	[10, 20, 30]
 	[40, 50, 60]
 	```
+# `list.sort()` vs `sorted(list)` built-in
+### `list.sort()`
+* The `list.sort()` method **sorts a list in place** - that is, without making a copy and it doesn't create a new list.
+* It returns `None` to remind us that it changes the receiver (the receiver is the target of a method call, a `list` object in this case).
+
+> [!info] Python Convention
+> Important Python API convention: **Functions or methods that changes an object in place** should return `None` to make it clear to the caller that the receiver was changes and no new object was created.
+> 
+> Drawback: we cannot cascade calls to those methods. Look at [Fluent Interface](https://en.wikipedia.org/wiki/Fluent_interface).
+### `sorted(list)`
+* The built-in function `sorted()` creates a new list and returns it.
+* It accepts any iterable object as an argument, including immutable sequences and generators.
+
+Python Sorting Algorithm is stable, meaning that it preserves the relative ordering of items that compare equally. For example:
+```python
+fruits = ['apple', 'grape', 'raspberry', 'banana']
+fruits_sorted2 = fruits.copy()
+
+fruits_sorted = sorted(fruits, key=len)
+fruits_sorted2.sort(key=len)
+
+print(fruits_sorted)
+print(fruits_sorted2)
+```
+Output:
+```
+['apple', 'grape', 'banana', 'raspberry']
+['apple', 'grape', 'banana', 'raspberry']
+```
+As you can see, `apple` and `grape` has the same length and the sorting algorithm preserved their order.
