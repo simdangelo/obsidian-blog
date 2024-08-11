@@ -1,9 +1,8 @@
 ---
 date: 2024-06-02
-modified: 2024-07-23T22:16:53+02:00
+modified: 2024-08-11T19:33:31+02:00
 ---
 # 0. Resources
-
 - Afaque Ahmad" YouTube channel: [https://www.youtube.com/@afaqueahmad7117/featured](https://www.youtube.com/@afaqueahmad7117/featured)
 
 ---

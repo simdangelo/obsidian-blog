@@ -1,6 +1,6 @@
 ---
 date: 2024-05-02
-modified: 2024-07-20T13:05:04+02:00
+modified: 2024-08-11T19:33:25+02:00
 ---
 I think that this post will not be so useful for many people. **Join** is something that happens in many other scenarios in the data fields (directly in SQL for data analytics, in Pandas or Polars library for data analysis, etc.), so I'm sure that everyone reading this post is familiar with this topic. However, I decided to write this post just to complete the series on the most common functions found in the Spark DataFrame API.
 
@@ -9,7 +9,7 @@ It is very likely that this will be the last post specifically on the DataFrame 
 ---
 # 0. Resources
 - “Spark Essentials with Scala” course by Daniel Ciocîrlan (link here: [https://rockthejvm.com/p/spark-essentials](https://rockthejvm.com/p/spark-essentials))
-- 
+
 ---
 # 1. Start the Project
 

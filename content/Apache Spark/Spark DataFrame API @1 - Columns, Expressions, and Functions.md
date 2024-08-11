@@ -1,9 +1,8 @@
 ---
 date: 2024-04-11
-modified: 2024-07-20T13:02:18+02:00
+modified: 2024-08-11T19:33:17+02:00
 ---
 # 0. Resources
-
 - “Spark Essentials with Scala” course by Daniel Ciocîrlan (link here: [https://rockthejvm.com/p/spark-essentials](https://rockthejvm.com/p/spark-essentials))
 - https://sparkbyexamples.com/
 

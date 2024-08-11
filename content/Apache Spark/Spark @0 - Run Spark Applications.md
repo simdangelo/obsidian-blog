@@ -1,6 +1,6 @@
 ---
 date: 2024-03-17
-modified: 2024-07-20T12:37:40+02:00
+modified: 2024-08-11T19:33:11+02:00
 ---
 In this article we’ll see how to set your local machine to run efficiently **Spark Application** with **Scala API** in **IntelliJ IDE**.
 
@@ -9,7 +9,6 @@ This guide has been tested on macOS 14.3 and on Windows 11.
 You can find the code used in this mini-guide (and in the next ones) in the following associated repository: [https://github.com/simdangelo/apache-spark-blog-tutorial](https://github.com/simdangelo/apache-spark-blog-tutorial).
 
 # 1. Install IntelliJ IDEA Community Edition
-
 [Download IntelliJ IDEA Community Edition](https://www.jetbrains.com/idea/download/) from the official JetBrains site (be careful not to install IntelliJ IDEA Ultimate which is a paid version).
 
 After the installation open it and, before starting any project, go in the **Plugins** tab and install **Scala**.

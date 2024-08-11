@@ -11,3 +11,6 @@ private/
 replit.nix
 content/Test
 content/Notion
+myenv
+.idea
+output
