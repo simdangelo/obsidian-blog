@@ -1,5 +1,6 @@
 ---
-modified: 2024-07-20T11:44:21+02:00
+title: Apache Spark
+modified: 2024-08-11T21:34:07+02:00
 ---
 This section of the blog will focus on using **Apache Spark**. I'll be using **Scala** as the programming language, but all the concepts are the same in Python, making it easy to convert Scala code to Python since the two APIs are very similar.
 

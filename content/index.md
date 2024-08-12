@@ -1,7 +1,7 @@
 ---
 title: Welcome to My Garden
 date: 2024-06-09
-modified: 2024-08-07T20:51:56+02:00
+modified: 2024-08-12T00:16:51+02:00
 ---
 
 I'm Simone, an **aspiring Software Engineer**. This website is my personal space, where I'll be documenting my journey in the vast realm of software engineering. 
@@ -10,7 +10,7 @@ As of now, the content might be a bit unpredictable, but in the near future, I p
 
 The overarching goal is to post monthly updates, reflecting on the achievements and challenges of the past month, and ensuring that I stay on track with the goals set in the previous month.
 
-For a more in-depth understanding of who I am and my plans for this blog, I invite you to read the first post on my presentation page. It provides a detailed exploration of my background, aspirations, and the vision I have for this space.
+For a more in-depth understanding of who I am and my plans for this blog, I invite you to read [this post](Blog/2024-01-07.%20Presentation.md). It provides a detailed exploration of my background, aspirations, and the vision I have for this space.
 
 Currently, I am in the process of migrating content from my old blog, which started in January 2024, to this new platform as of June 2024. This involves transferring posts, reorganizing content, and ensuring that everything is up-to-date, so some content may temporarily be missing.
 
