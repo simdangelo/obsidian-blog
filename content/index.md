@@ -1,7 +1,7 @@
 ---
 title: Welcome to My Garden
 date: 2024-06-09
-modified: 2024-08-12T00:16:51+02:00
+modified: 2024-08-16T16:07:43+02:00
 ---
 
 I'm Simone, an **aspiring Software Engineer**. This website is my personal space, where I'll be documenting my journey in the vast realm of software engineering. 
@@ -21,6 +21,7 @@ I have organized the content of this Garden into various topics and sections for
 	* [Fluent Python (by Luciano Ramalho)](Books/Fluent%20Python/index.md): This book is an intermediate-level Python book.
 	* [Head First Design Pattern (by Eric Freeman & Elisabeth Robson)](Books/Head%20First%20Design%20Pattern/index.md): This book is an highly recommend book for Design Pattern. When the books need clarification or integration, I'll use videos from Christopher Okhravi's YouTube channel, which has a great playlist about design patterns: [Design Pattern Playlist by Christopher Okhravi](https://www.youtube.com/playlist?list=PLrhzvIcii6GNjpARdnO4ueTUAVR9eMBpc).
 	* [Python Object-Oriented Programming (by Steven F.Lott & Dusty Phillips)](Books/Python%20Object-Oriented%20Programming/index.md): This book dives into the various aspects of OOP in Python.
+* [Database System](Database%20System/index.md): this is a fantastic course ([available freely on YouTube](https://www.youtube.com/watch?v=vdPALZ-GCfI&list=PLSE8ODhjZXjbj8BMuIrRcacnQh20hmY9g&index=1)) taken by Andy Pavlo from Carnegie Mellon University. It's a very long course, so along the time I'm trying to follow all the lessons and post here my notes. It's not a "practical course", in the sense that I'm not learning how to code or some specific tools, but it's giving me a great consciousness about Databases, that is a tool we constantly use all the time as software engineers. If you want to know what's happen under the hood when you use a database, I really suggest this course. Since I'm trying to get notes at best, I'm only at the 5th lesson at the time I'm writing.
 * [Python](Python/index.md): I will fill this section with notes on Python topics that I find interesting or useful to know about.
 * [Other](Other/index.md): this section contains scattered notes I have about Docker, Git, and other topics I study in the future.
 * [Periodical Retrospective](Periodical%20Retrospective/index.md): I will regularly post recaps every 2-3 months, reflecting on my professional life, highlighting what went well, and identifying areas for improvement.

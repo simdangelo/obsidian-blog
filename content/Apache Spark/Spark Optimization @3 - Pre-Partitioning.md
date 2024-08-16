@@ -1,6 +1,6 @@
 ---
 date: 2024-08-11
-modified: 2024-08-12T11:36:31+02:00
+modified: 2024-08-12T11:59:39+02:00
 ---
 # 0. Resources
 * “Spark Optimization with Scala” course by Daniel Ciocîrlan (link here: [https://rockthejvm.com/p/spark-optimization](https://rockthejvm.com/p/spark-optimization))
@@ -127,11 +127,7 @@ Couldn’t we just repartition the narrow table to 10 and just be done with it?
 
 Solution: this idea is TERRIBLE. If we repartition the `narrowTable` into 10 partitions like `initialTable`, neither repartitioning guarantees the fact that all the rows with the same id are on the same partition, which is a mandatory guarantee that must be upheld before the join takes place.
 
-So the following code:
-```scala
-initialTable.join(narrowTable.repartition(10), "id").explain()
-```
-is identical to *Scenario 1*.
+So the query plan produced by `initialTable.join(narrowTable.repartition(10), "id").explain()` would be identical to the one of *Scenario 1*.
 
 ---
 
