@@ -1,8 +1,10 @@
 ---
 date: 2024-08-12
-modified: 2024-08-13T17:26:36+02:00
+modified: 2024-08-26T22:22:19+02:00
 ---
-These notes about **Partitioning** will be "notebook-style" and only important and useful operations will be shown in this article (hence no such operations will be shown: dataframe creation, session state creation, etc.) For the complete code, refers to these notebooks I uploaded on a specific repository on [this link](metti!!!).
+These notes about **Partitioning** will be "notebook-style" and only important and useful operations will be shown in this article (hence, very probably, no such operations will be shown: DataFrame creation, session state creation, etc.). For the complete code, refers to these notebooks I uploaded on a specific repository on [this link](metti!!!).
+# 0. Resources
+* [*Data with Nikk the Greek* YouTube Channel](https://www.youtube.com/@DataNikktheGreek)
 # 1. First sneak peak into Spark Partitions
  General hints:
  * `df.rdd.getNumPartitions()` returns the number of partitions of the current Spark DataFrame;
