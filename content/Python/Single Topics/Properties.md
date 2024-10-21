@@ -1,9 +1,9 @@
 ---
 date: 2024-07-29
-modified: 2024-10-20T12:19:54+02:00
+modified: 2024-10-20T19:30:15+02:00
 ---
 
-*These notes are derived from an excellent articles on [realpython.com](realpython.com), specifically covering **properties**. The article is [Properties](https://realpython.com/python-property/).*
+*These notes are derived from an excellent articles on [realpython.com](https://realpython.com/), specifically covering **properties**. The article is [Properties](https://realpython.com/python-property/).*
 
 # Managing Attributes in your classes
 Typically, there are two ways to manage attributes in classes:

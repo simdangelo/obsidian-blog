@@ -1,8 +1,8 @@
 ---
 date: 2024-07-27
-modified: 2024-07-28T22:31:03+02:00
+modified: 2024-10-20T19:30:48+02:00
 ---
-*These notes are derived from an excellent articles on [realpython.com](realpython.com), specifically covering setters, getters, and, only partially, properties. The article is [Getters and Setters](https://realpython.com/python-getter-setter/).*
+*These notes are derived from an excellent articles on [realpython.com](https://realpython.com/), specifically covering setters, getters, and, only partially, properties. The article is [Getters and Setters](https://realpython.com/python-getter-setter/).*
 
 # Introduction
 * In languages like Java and C++, **getter** and **setter** methods are used to write attribute in a class and they allow to access and mutate **private** ones while maintaining **encapsulation**.
